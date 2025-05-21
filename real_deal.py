@@ -1,7 +1,7 @@
 # import os
 from pathlib import Path
 import argparse
-# import sys
+import sys
 
 with open('current_dir.txt', 'r') as file:
     content = file.read()
