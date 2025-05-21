@@ -1,10 +1,13 @@
 from pynput import keyboard
 from Main import run
+import subprocess
+import shlex
 
 cmd = [{keyboard.Key.ctrl, keyboard.Key.alt, keyboard.KeyCode.from_char('b')}]
 track = set()
 
 def execute():
+    subprocess.run(["python", "initialize_text.py"])
     window = run()
     window.mainloop()
 
