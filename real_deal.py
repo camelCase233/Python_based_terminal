@@ -80,6 +80,27 @@ class mkdir(file_system):
             new_dir.mkdir(parents=True, exist_ok=True)
             print("The directory has been made")
 
+class cat(file_system):
+    def __init__(self):
+        super().__init__()
+        self.parser = argparse.ArgumentParser()
+        self.parser.add_argument("-cat", "--show_content", type=str)
+        self.args = self.parser.parse_args()
+    
+    def run(self):
+        if self.args.show_content:
+            file_path = file_system.current_directory/Path(self.args.show_content)
+            print(file_path)
+            if file_path.exists():
+                with open(file_path, "r") as f:
+                    data = f.read()
+                
+                print(data)
+                return
+            print("This file doesn't even exist")
+            return
+
 if __name__ == "__main__":
-    cmd = cd()
+    cmd = cat()
     cmd.run()
+
